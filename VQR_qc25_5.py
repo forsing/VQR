@@ -533,7 +533,7 @@ print()
 89
 89
 === Predviđena sledeća loto kombinacija (5+1) ===
-4 6 15 23 29 6
+4 6 x x 29 6
 """
 
 
