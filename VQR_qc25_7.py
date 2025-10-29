@@ -1,52 +1,3 @@
-# https://qiskit-community.github.io/qiskit-machine-learning/tutorials/01_neural_networks.html
-
-# https://github.com/qiskit-community/qiskit-machine-learning?tab=readme-ov-file
-
-# https://github.com/Qiskit/textbook/tree/main/notebooks/quantum-machine-learning#
-
-
-
-""" 
-https://qiskit-community.github.io/qiskit-machine-learning/tutorials/
-
-https://github.com/qiskit-community
-
-
-https://github.com/qiskit-community/qiskit-machine-learning/blob/stable/0.8/docs/tutorials/01_neural_networks.ipynb
-
-https://github.com/qiskit-community/qiskit-machine-learning/blob/stable/0.8/docs/tutorials/02_neural_network_classifier_and_regressor.ipynb
-
-https://github.com/qiskit-community/qiskit-machine-learning/blob/stable/0.8/docs/tutorials/02a_training_a_quantum_model_on_a_real_dataset.ipynb
-
-
-
-"""
-
-
-
-
-
-### https://qiskit-community.github.io/qiskit-machine-learning/tutorials/03_quantum_kernel.html
-
-
-### https://github.com/qiskit-community/qiskit-machine-learning/blob/stable/0.8/docs/tutorials/03_quantum_kernel.ipynb
-
-
-
-
-
-
-
-"""
-https://qiskit-community.github.io/qiskit-machine-learning/tutorials/03_quantum_kernel.html
-
-https://github.com/qiskit-community/qiskit-machine-learning/blob/main/docs/tutorials/03_quantum_kernel.ipynb
-
-"""
-
-
-
-
 
 import numpy as np
 import pandas as pd
@@ -74,7 +25,7 @@ random.seed(SEED)
 algorithm_globals.random_seed = SEED
 
 # 1. Učitaj loto podatke
-df = pd.read_csv("/Users/milan/Desktop/GHQ/data/loto7_4500_k84.csv", header=None)
+df = pd.read_csv("/loto7_4500_k84.csv", header=None)
 
 
 ###################################
@@ -86,12 +37,7 @@ print()
 """
 Prvih 5 ucitanih kombinacija iz CSV fajla:
 
-   0   1   2   3   4  5
-0  8  10  15  21  31  6
-1  7  16  19  25  31  2
-2  1   7  18  25  28  7
-3  6   7  12  19  22  2
-4  8  25  29  33  34  3
+
 """
 
 print()
@@ -102,12 +48,7 @@ print()
 """
 Zadnjih 5 ucitanih kombinacija iz CSV fajla:
 
-    0   1   2   3   4  5
-81  2   6  15  17  20  3
-82  3   5  20  28  35  9
-83  1   7  11  28  31  4
-84  8  11  16  22  27  6
-85  7   9  13  14  28  2
+
 """
 ####################################
 
@@ -146,12 +87,7 @@ print()
 """
 Prvih 5 mapiranih kombinacija:
 
-   0   1   2   3   4  5
-0  7   8  12  17  26  5
-1  6  14  16  21  26  1
-2  0   5  15  21  23  6
-3  5   5   9  15  17  1
-4  7  23  26  29  29  2
+ 
 """
 
 print()
@@ -160,14 +96,7 @@ print()
 print(df_indexed.tail())
 print()
 """
-Zadnjih 5 mapiranih kombinacija:
 
-    0  1   2   3   4  5
-81  1  4  12  13  15  2
-82  2  3  17  24  30  8
-83  0  5   8  24  26  3
-84  7  9  13  18  22  5
-85  6  7  10  10  23  1
 """
 
 
@@ -245,7 +174,7 @@ def full_qcbm(params_list, values):
 
     return qc
 
-# Test primer: enkoduj kombinaciju [13, 5, 7, 20, 23, 8]
+
 test_values = [12, 11, 38, 14, 35, 4, 21]
 np.random.seed(39)
 params_list = [np.random.uniform(0, 2*np.pi, num_layers * num_qubits) for _ in range(num_positions)]
@@ -297,26 +226,26 @@ circuit_drawer(full_circuit, output='latex', style={"backgroundcolor": "#EEEEEE"
 """
 # Sačuvaj kao PDF
 img1 = full_circuit.draw('latex')
-img1.save("/Users/milan/Desktop/GHQ/data/qc30_5_1.pdf")
+img1.save("data/qc30_5_1.pdf")
 
 
 # Sačuvaj kao sliku u latex formatu jpg
 img2 = full_circuit.draw('latex')
-img2.save("/Users/milan/Desktop/GHQ/data/qc30_5_2.jpg")
+img2.save("/data/qc30_5_2.jpg")
 
 
 # Sačuvaj kao sliku u latex formatu png
 img3 = full_circuit.draw('latex')
-img3.save("/Users/milan/Desktop/GHQ/data/qc30_5_3.png")
+img3.save("/data/qc30_5_3.png")
 
 
 # Sačuvaj kao sliku u matplotlib formatu jpg
 img4 = full_circuit.draw('mpl', fold=40)
-img4.savefig("/Users/milan/Desktop/GHQ/data/qc30_5_4.jpg")
+img4.savefig("/data/qc30_5_4.jpg")
 
 # Sačuvaj kao sliku u matplotlib formatu png
 img5 = full_circuit.draw('mpl', fold=40)
-img5.savefig("/Users/milan/Desktop/GHQ/data/qc30_5_5.png")
+img5.savefig("/data/qc30_5_5.png")
 """
 
 
@@ -324,7 +253,7 @@ img5.savefig("/Users/milan/Desktop/GHQ/data/qc30_5_5.png")
 
 # Sačuvaj kao sliku u matplotlib formatu jpg
 img4 = full_circuit.draw('mpl', fold=40)
-img4.savefig("/Users/milan/Desktop/GHQ/KvantniRegresor/1VQR/VQR_qc25_7_4.jpg")
+img4.savefig("/KvantniRegresor/1VQR/VQR_qc25_7_4.jpg")
 
 
 
@@ -365,7 +294,7 @@ from qiskit_machine_learning.algorithms import VQR
 
 
 # =========================
-# 2. Koristimo samo zadnjih N=1000 za test
+# 2. Koristimo svih N=4500 izvlacenja
 # =========================
 N = 4500
 df = df.tail(N).reset_index(drop=True)
@@ -545,14 +474,14 @@ for i in range(7):  # 5 brojeva + dodatni broj
     print(vqr.score(X_scaled, y_scaled), "\n")
     """
     qr.score(X_scaled, y_scaled)
-    0.8616721019884289 
+    
     """
     
     print("vqr.weights")
     print(vqr.weights, "\n")
     """
     vqr.weights
-    [ 1.6261398  -0.02813501  2.50853307 -0.53617058 -0.01783437]
+    
     """
 
 
