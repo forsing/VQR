@@ -284,7 +284,6 @@ img4.savefig("/KvantniRegresor/1VQR/VQR_qc25_5_4.jpg")
 
 
 
-# QNNR (Quantum Neural Network Regressor)
 
 import pandas as pd
 import numpy as np
