@@ -515,7 +515,7 @@ print()
 4500
 4500
 === Predviđena sledeća loto kombinacija (5+2) ===
-2 5 7 9 14 25 31
+2 5 x x x 25 31
 """
 
 
