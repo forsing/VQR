@@ -223,37 +223,31 @@ circuit_drawer(full_circuit, output='latex', style={"backgroundcolor": "#EEEEEE"
 # plt.show()
 
 
-# import tinytex
-# pip install tinycio
-# pip install torchvision
-# tinytex.install()
-
-
 
 """
 # Sačuvaj kao PDF
 img1 = full_circuit.draw('latex')
-img1.save("data/qc30_5_1.pdf")
+img1.save("data/qc25_5_1.pdf")
 
 
 # Sačuvaj kao sliku u latex formatu jpg
 img2 = full_circuit.draw('latex')
-img2.save("/data/qc30_5_2.jpg")
+img2.save("/data/qc25_5_2.jpg")
 
 
 # Sačuvaj kao sliku u latex formatu png
 img3 = full_circuit.draw('latex')
-img3.save("/data/qc30_5_3.png")
+img3.save("/data/qc25_5_3.png")
 
 
 # Sačuvaj kao sliku u matplotlib formatu jpg
 img4 = full_circuit.draw('mpl', fold=40)
-img4.savefig("/data/qc30_5_4.jpg")
+img4.savefig("/data/qc25_5_4.jpg")
 
 # Sačuvaj kao sliku u matplotlib formatu png
 img5 = full_circuit.draw('mpl', fold=40)
-img5.savefig("/data/qc30_5_5.png")
-"""
+img5.savefig("/data/qc25_5_5.png")
+
 
 
 
@@ -263,7 +257,7 @@ img4 = full_circuit.draw('mpl', fold=40)
 img4.savefig("/KvantniRegresor/1VQR/VQR_qc25_7_4.jpg")
 
 
-
+"""
 
 
 ###############################################
@@ -273,7 +267,6 @@ img4.savefig("/KvantniRegresor/1VQR/VQR_qc25_7_4.jpg")
 
 
 
-# QNNR (Quantum Neural Network Regressor)
 
 import pandas as pd
 import numpy as np
@@ -301,9 +294,9 @@ from qiskit_machine_learning.algorithms import VQR
 
 
 # =========================
-# 2. Koristimo svih N=4500 izvlacenja
+# 2. Koristimo svih N=4502 izvlacenja
 # =========================
-N = 4500
+N = 4502
 df = df.tail(N).reset_index(drop=True)
 
 
@@ -407,7 +400,7 @@ for i in range(7):  # 5 brojeva + dodatni broj
     
     """
     # -------------------------
-    # QNN (sada eksplicitno prosleđujemo parametre)
+    # (sada eksplicitno prosleđujemo parametre)
     # -------------------------
     regression_estimator_qnn = EstimatorQNN(
         circuit=full_circuit_map,
@@ -437,10 +430,7 @@ for i in range(7):  # 5 brojeva + dodatni broj
     """
     
 
-
-
-    # NeuralNetworkRegressor
-    # optimizer = COBYLA(maxiter=4486) # 100
+    
     optimizer = COBYLA(maxiter=len(X_scaled))
 
 
