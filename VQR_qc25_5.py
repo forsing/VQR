@@ -387,7 +387,7 @@ for i in range(6):  # 5 brojeva + dodatni broj
 
     
     """
-    VQR is a special variant of the NeuralNetworkRegressor with a EstimatorQNN
+    # VQR is a special variant of the NeuralNetworkRegressor with a EstimatorQNN
     
     # -------------------------
     # QNN (sada eksplicitno prosleđujemo parametre)
