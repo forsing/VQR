@@ -54,12 +54,7 @@ print()
 """
 Zadnjih 5 ucitanih kombinacija iz CSV fajla:
 
-    0   1   2   3   4  5
-81  2   6  15  17  20  3
-82  3   5  20  28  35  9
-83  1   7  11  28  31  4
-84  8  11  16  22  27  6
-85  7   9  13  14  28  2
+
 """
 ####################################
 
@@ -86,7 +81,7 @@ print()
 print(f"Učitano kombinacija: {df.shape[0]}, Broj pozicija: {df.shape[1]}")
 print()
 """
-Učitano kombinacija: 86, Broj pozicija: 6
+Učitano kombinacija: 89, Broj pozicija: 6
 """
 
 
@@ -114,12 +109,7 @@ print()
 """
 Zadnjih 5 mapiranih kombinacija:
 
-    0  1   2   3   4  5
-81  1  4  12  13  15  2
-82  2  3  17  24  30  8
-83  0  5   8  24  26  3
-84  7  9  13  18  22  5
-85  6  7  10  10  23  1
+
 """
 
 
@@ -198,7 +188,7 @@ test_values = [27,16,35,34,12,4]
 np.random.seed(35)
 params_list = [np.random.uniform(0, 2*np.pi, num_layers * num_qubits) for _ in range(num_positions)]
 
-# Generiši QCBM za svih 6 pozicija
+# Generiši za svih 6 pozicija
 full_circuit = full_qcbm(params_list, test_values)
 
 
@@ -210,10 +200,6 @@ full_circuit.draw('mpl')
 # fold=40 prelama linije tako da veliki krug stane na ekran.
 full_circuit.draw('mpl', fold=40)
 # plt.show()
-
-
-# The only valid choices are 
-# text, latex, latex_source, and mpl
 
 
 # Kompaktni prikaz kola
@@ -235,37 +221,30 @@ circuit_drawer(full_circuit, output='latex', style={"backgroundcolor": "#EEEEEE"
 # plt.show()
 
 
-# import tinytex
-# pip install tinycio
-# pip install torchvision
-# tinytex.install()
-
-
-
 """
 # Sačuvaj kao PDF
 img1 = full_circuit.draw('latex')
-img1.save("/data/qc30_5_1.pdf")
+img1.save("/data/qc25_5_1.pdf")
 
 
 # Sačuvaj kao sliku u latex formatu jpg
 img2 = full_circuit.draw('latex')
-img2.save("/data/qc30_5_2.jpg")
+img2.save("/data/qc25_5_2.jpg")
 
 
 # Sačuvaj kao sliku u latex formatu png
 img3 = full_circuit.draw('latex')
-img3.save("/data/qc30_5_3.png")
+img3.save("/data/qc25_5_3.png")
 
 
 # Sačuvaj kao sliku u matplotlib formatu jpg
 img4 = full_circuit.draw('mpl', fold=40)
-img4.savefig("/data/qc30_5_4.jpg")
+img4.savefig("/data/qc25_5_4.jpg")
 
 # Sačuvaj kao sliku u matplotlib formatu png
 img5 = full_circuit.draw('mpl', fold=40)
-img5.savefig("/data/qc30_5_5.png")
-"""
+img5.savefig("/data/qc25_5_5.png")
+
 
 
 
@@ -274,7 +253,7 @@ img5.savefig("/data/qc30_5_5.png")
 img4 = full_circuit.draw('mpl', fold=40)
 img4.savefig("/KvantniRegresor/1VQR/VQR_qc25_5_4.jpg")
 
-
+"""
 
 
 
@@ -352,14 +331,9 @@ for i in range(6):  # 5 brojeva + dodatni broj
     
     """
 
-
-
     sampler = Sampler()
 
-    
     gradient = GradientDescent()  # param-shift rule
-
-
 
 
     # -------------------------
@@ -404,15 +378,9 @@ for i in range(6):  # 5 brojeva + dodatni broj
 
 
 
-
-
-
-
-
     # 3. Spoji ih u jedan parametarski krug
     full_circuit_map = feature_map.compose(ansatz)
-    # full_circuit = feature_map.compose(feature_map)
-
+    
 
     full_circuit.draw("mpl", style="clifford", fold=20)
     # plt.show()
@@ -420,7 +388,7 @@ for i in range(6):  # 5 brojeva + dodatni broj
     
     """
     # -------------------------
-    # QNN (sada eksplicitno prosleđujemo parametre)
+    # (sada eksplicitno prosleđujemo parametre)
     # -------------------------
     regression_estimator_qnn = EstimatorQNN(
         circuit=full_circuit_map,
@@ -429,8 +397,6 @@ for i in range(6):  # 5 brojeva + dodatni broj
         gradient=gradient
     )
     """
-
-
     
     """
     def parity(x):
@@ -447,14 +413,8 @@ for i in range(6):  # 5 brojeva + dodatni broj
         gradient=gradient
     )
     """
-    
 
-    
-
-    # NeuralNetworkRegressor
-    # optimizer = COBYLA(maxiter=1000)
     optimizer = COBYLA(maxiter=len(X_scaled))
-    
 
     total_iters = len(X_scaled)
     pbar = tqdm(total=total_iters, desc=f"Broj {i+1}")
@@ -462,16 +422,12 @@ for i in range(6):  # 5 brojeva + dodatni broj
     def progress_callback(weights, loss):
         pbar.update(1)
 
-
-
     vqr = VQR(
         feature_map=feature_map,
         ansatz=ansatz,
         optimizer=optimizer,
         callback=progress_callback
     )
-
-
 
 
     
@@ -486,7 +442,6 @@ for i in range(6):  # 5 brojeva + dodatni broj
     # return to default figsize
     plt.rcParams["figure.figsize"] = (6, 4)
 
-    
 
     # score result
     print("\vqr.score(X_scaled, y_scaled)")
@@ -504,8 +459,6 @@ for i in range(6):  # 5 brojeva + dodatni broj
     """
 
 
-
-
     # plot data
     plt.plot(X_scaled, y_scaled, "bo")
     plt.title(f"Broj {i+1} - Podaci")
@@ -513,8 +466,6 @@ for i in range(6):  # 5 brojeva + dodatni broj
     plt.ylabel(f"Izlazni podaci (broj {i+1})")
     plt.grid()
     # plt.show()
-
-
 
 
     # Predikcija sledećeg broja
@@ -536,14 +487,6 @@ print()
 === Predviđena sledeća loto kombinacija (5+1) ===
 4 6 x x 29 6
 """
-
-
-
-
-
-
-
-
 
 
 
@@ -574,6 +517,3 @@ Python version                 3.11.13
 OS                             Darwin         
 Time                           Tue Sep 09 18:11:49 2025 CEST
 """
-
-
-
