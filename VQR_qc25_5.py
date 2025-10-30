@@ -1,5 +1,13 @@
 # VQR (Variational Quantum Regressor)
 
+
+"""
+Loto Skraceni Sistemi 
+https://www.lotoss.info
+ABBREVIATED LOTTO SYSTEMS
+"""
+
+
 import numpy as np
 import pandas as pd
 
