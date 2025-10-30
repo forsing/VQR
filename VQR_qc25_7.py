@@ -399,8 +399,10 @@ for i in range(7):  # 5 brojeva + dodatni broj
 
     
     """
+    # VQR is a special variant of the NeuralNetworkRegressor with a EstimatorQNN
+    
     # -------------------------
-    # (sada eksplicitno prosleđujemo parametre)
+    # QNN (sada eksplicitno prosleđujemo parametre)
     # -------------------------
     regression_estimator_qnn = EstimatorQNN(
         circuit=full_circuit_map,
@@ -409,26 +411,6 @@ for i in range(7):  # 5 brojeva + dodatni broj
         gradient=gradient
     )
     """
-
-
-
-
-    
-    """
-    def parity(x):
-        return f"{bin(x)}".count("1") % 2
-
-    regression_sampler_qnn = SamplerQNN(
-        sampler=sampler,
-        circuit=full_circuit_map,
-        input_params=feature_map.parameters,
-        weight_params=ansatz.parameters,
-        interpret=parity,
-        output_shape=2,
-        gradient=gradient
-    )
-    """
-    
 
     
     optimizer = COBYLA(maxiter=len(X_scaled))
@@ -448,7 +430,6 @@ for i in range(7):  # 5 brojeva + dodatni broj
         optimizer=optimizer,
         callback=progress_callback
     )
-
 
 
 
