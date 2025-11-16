@@ -423,8 +423,10 @@ for i in range(6):  # 5 brojeva + dodatni broj
         optimizer=optimizer,
         callback=progress_callback
     )
+   
+    # VQR built ✅  | ansatz params: 6   
 
-
+   
     
     # create empty array for callback to store evaluations of the objective function
     objective_func_vals = []
