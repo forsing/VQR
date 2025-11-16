@@ -439,7 +439,7 @@ for i in range(7):  # 5 brojeva + dodatni broj
         callback=progress_callback
     )
 
-
+    # VQR built ✅  | ansatz params: 6
 
     
     # create empty array for callback to store evaluations of the objective function
