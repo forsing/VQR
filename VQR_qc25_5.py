@@ -23,11 +23,6 @@ https://www.lotoss.info
 ABBREVIATED LOTTO SYSTEMS
 """
 
-"""
-svih 4510 izvlacenja
-30.07.1985.- 11.11.2025.
-"""
-
 
 import numpy as np
 import pandas as pd
