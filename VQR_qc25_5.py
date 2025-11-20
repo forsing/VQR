@@ -295,7 +295,11 @@ from sklearn.preprocessing import MinMaxScaler
 from qiskit_aer import AerSimulator
 from qiskit_machine_learning.algorithms import NeuralNetworkRegressor
 from qiskit_machine_learning.utils import algorithm_globals
-from qiskit_machine_learning.optimizers import COBYLA
+
+from qiskit_algorithms.optimizers import COBYLA, SPSA
+from qiskit_algorithms.optimizers import ADAM
+
+
 from tqdm import tqdm
 import random
 
@@ -425,7 +429,9 @@ for i in range(6):  # 5 brojeva + dodatni broj
     """
     
 
-    optimizer = COBYLA(maxiter=len(X_scaled))
+    optimizer = COBYLA(maxiter=300, tol=1e-6)
+    # optimizer = SPSA(maxiter=300)
+    # optimizer = ADAM(maxiter=150, lr=0.1)
 
     total_iters = len(X_scaled)
     pbar = tqdm(total=total_iters, desc=f"Broj {i+1}")
