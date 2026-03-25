@@ -46,7 +46,7 @@ svih 4586 izvlacenja Loto 7/39 u Srbiji
 """
 
 # 1. Učitaj loto podatke
-df = pd.read_csv("/Users/4c/Desktop/GHQ/data/loto7_4586_k24.csv", header=None)
+df = pd.read_csv("/data/loto7_4586_k24.csv", header=None)
 
 
 ###################################
